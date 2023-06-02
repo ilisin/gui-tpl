@@ -1,8 +1,8 @@
 import { rmSync } from 'node:fs'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import electron, { onstart } from 'vite-plugin-electron'
 import AutoImport from 'unplugin-auto-import/vite'
+import electron from 'vite-plugin-electron'
 import pkg from './package.json'
 
 // https://vitejs.dev/config/
@@ -21,11 +21,10 @@ export default defineConfig(({ command }) => {
           // Main-Process entry file of the Electron App.
           entry: 'electron/main/index.ts',
           onstart(options) {
-            if (process.env.VSCODE_DEBUG) {
+            if (process.env.VSCODE_DEBUG)
               console.log(/* For `.vscode/.debug.script.mjs` */'[startup] Electron App')
-            } else {
+            else
               options.startup()
-            }
           },
           vite: {
             build: {
@@ -36,13 +35,12 @@ export default defineConfig(({ command }) => {
                 external: Object.keys('dependencies' in pkg ? pkg.dependencies : {}),
               },
             },
-            plugins: [process.env.VSCODE_DEBUG ? onstart() : null]
-          }
+          },
         },
         {
           entry: 'electron/preload/index.ts',
           onstart(options) {
-            // Notify the Renderer-Process to reload the page when the Preload-Scripts build is complete, 
+            // Notify the Renderer-Process to reload the page when the Preload-Scripts build is complete,
             // instead of restarting the entire Electron App.
             options.reload()
           },
@@ -56,7 +54,7 @@ export default defineConfig(({ command }) => {
               },
             },
           },
-        }
+        },
       ]),
       AutoImport({
         imports: ['vue', '@vueuse/core'],

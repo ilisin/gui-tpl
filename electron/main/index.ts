@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { BrowserWindow, app } from 'electron'
 
 app.whenReady().then(() => {
   const win = new BrowserWindow({
@@ -8,8 +8,9 @@ app.whenReady().then(() => {
   // You can use `process.env.VITE_DEV_SERVER_URL` when the vite command is called `serve`
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL)
-  } else {
+  }
+  else {
     // Load your file
-    win.loadFile('dist/index.html');
+    win.loadFile('dist/index.html')
   }
 })
