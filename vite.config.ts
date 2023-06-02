@@ -1,4 +1,6 @@
+/* eslint-disable import/default */
 import { rmSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
@@ -61,5 +63,11 @@ export default defineConfig(({ command }) => {
         vueTemplate: true,
       }),
     ],
+    define: { 'process.env': {} },
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
+    },
   }
 })

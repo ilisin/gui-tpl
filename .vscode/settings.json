@@ -23,4 +23,19 @@
   "[vue]": {
     "editor.defaultFormatter": "Vue.volar",
   },
+  // Extension: ESLint
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true,
+    "source.organizeImports": true,
+  },
+  "eslint.format.enable": true,
+  "eslint.packageManager": "yarn",
+  // Extension: Stylelint
+  "stylelint.packageManager": "pnpm",
+  "stylelint.validate": [
+    "css",
+    "scss",
+    "vue"
+  ],
 }
