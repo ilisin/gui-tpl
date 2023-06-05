@@ -44,7 +44,7 @@
       "skipFiles": [
         "<node_internals>/**",
         "${workspaceRoot}/node_modules/**",
-        "${workspaceRoot}/dist-electron/**",
+        "${workspaceRoot}/electron/**",
         // Skip files in host(VITE_DEV_SERVER_URL)
         "http://127.0.0.1:3344/**"
       ]

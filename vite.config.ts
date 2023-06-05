@@ -15,6 +15,8 @@ export default defineConfig(({ command }) => {
   const isBuild = command === 'build'
   const sourcemap = isServe || !!process.env.VSCODE_DEBUG
 
+  const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
+
   return {
     plugins: [
       vue(),
@@ -71,5 +73,10 @@ export default defineConfig(({ command }) => {
         '@styles': fileURLToPath(new URL('./src/styles', import.meta.url)),
       },
     },
+    server: {
+      host: url.hostname,
+      port: +url.port,
+    },
+    clearScreen: false,
   }
 })
