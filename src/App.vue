@@ -27,6 +27,9 @@ const test = () => {
         alt="Vue logo"
       >
     </a>
+    <a href="https://vuejs.org/">
+      <img src="@images/avatars/avatar-1.png">
+    </a>
     <button @click="test">
       hello
     </button>
@@ -37,10 +40,10 @@ const test = () => {
 
 <style scoped>
 .logo {
-  height: 6em;
   padding: 1.5em;
-  will-change: filter;
+  block-size: 6em;
   transition: filter 300ms;
+  will-change: filter;
 }
 
 .logo:hover {

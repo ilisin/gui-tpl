@@ -21,7 +21,7 @@
   },
   // Vue
   "[vue]": {
-    "editor.defaultFormatter": "Vue.volar",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   },
   // Extension: ESLint
   "editor.codeActionsOnSave": {
@@ -37,5 +37,13 @@
     "css",
     "scss",
     "vue"
+  ],
+  // Extension: Spell Checker
+  "cSpell.words": [
+    "antfu",
+    "pinia",
+    "stylelint",
+    "unplugin",
+    "vueuse"
   ],
 }
