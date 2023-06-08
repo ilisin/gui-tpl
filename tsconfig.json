@@ -18,6 +18,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -27,6 +29,18 @@
       "@/*": [
         "src/*"
       ],
+      "@layouts/*": [
+        "src/@layouts/*"
+      ],
+      "@layouts": [
+        "src/@layouts"
+      ],
+      "@core/*": [
+        "src/@core/*"
+      ],
+      "@core": [
+        "src/@core"
+      ],
       "@images/*": [
         "src/assets/images/*"
       ],
@@ -35,23 +49,18 @@
       ]
     },
     "types": [
-      "vite/client",
-      "vite-plugin-pages/client",
-      "vite-plugin-vue-layouts/client"
+      "vite/client"
     ],
   },
   "include": [
     "vite.config.*",
     "shims.d.ts",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
+    "src/**/*",
+    // "src/**/*.ts",
+    // "src/**/*.d.ts",
+    // "src/**/*.tsx",
     "src/**/*.vue",
     "auto-imports.d.ts",
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
+    "components.d.ts"
   ]
 }
