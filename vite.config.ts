@@ -3,6 +3,8 @@ import { rmSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import Vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
@@ -107,9 +109,13 @@ export default defineConfig(({ command }) => {
           //   'vue-router/auto': ['useLink'],
           // },
         ],
+        resolvers: [ElementPlusResolver()],
         eslintrc: {
           enabled: true,
         },
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
       }),
     ],
     define: { 'process.env': {} },
