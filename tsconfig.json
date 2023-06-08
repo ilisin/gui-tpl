@@ -36,8 +36,8 @@
     },
     "types": [
       "vite/client",
-      "vite-plugin-pages/client",
-      "vite-plugin-vue-layouts/client"
+      // "vite-plugin-pages/client",
+      // "vite-plugin-vue-layouts/client"
     ],
   },
   "include": [
@@ -48,6 +48,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "auto-imports.d.ts",
+    "typed-router.d.ts",
   ],
   "references": [
     {

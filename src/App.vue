@@ -12,6 +12,7 @@ const test = () => {
 </script>
 
 <template>
+  <RouterView />
   <div>
     <a href="https://vitejs.dev">
       <img

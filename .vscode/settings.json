@@ -1,6 +1,9 @@
 {
   "editor.formatOnSave": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "vue-router"
+  ],
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
