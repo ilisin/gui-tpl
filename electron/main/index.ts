@@ -1,5 +1,6 @@
 import { join } from 'node:path'
 import { BrowserWindow, app, ipcMain, shell } from 'electron'
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 
 // The built directory structure
 //
@@ -76,6 +77,10 @@ async function createWindow() {
   })
 
   // win.webContents.on('will-navigate', (event, url) => { }) #344
+  console.log('start install vue-devtools')
+  installExtension(VUEJS_DEVTOOLS)
+    .then(name => console.log(`Added Extension:  ${name}`))
+    .catch(err => console.log('An error occurred: ', err))
 }
 
 app.whenReady().then(createWindow)
