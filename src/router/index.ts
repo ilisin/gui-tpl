@@ -5,4 +5,9 @@ const router = createRouter({
   history: createWebHistory(),
 })
 
+router.beforeEach((to, from, next) => {
+  console.log('router.beforeEach', to, from)
+  next()
+})
+
 export default router

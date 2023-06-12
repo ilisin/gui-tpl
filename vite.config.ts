@@ -2,7 +2,16 @@
 import { rmSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import Vue from '@vitejs/plugin-vue'
+import {
+  presetAttributify,
+  presetIcons,
+  presetUno,
+  transformerDirectives,
+  transformerVariantGroup,
+} from 'unocss'
+import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import ElementPlus from 'unplugin-element-plus/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
@@ -109,13 +118,34 @@ export default defineConfig(({ command }) => {
           //   'vue-router/auto': ['useLink'],
           // },
         ],
-        resolvers: [ElementPlusResolver()],
+        resolvers: [ElementPlusResolver({
+          importStyle: 'sass',
+        })],
         eslintrc: {
           enabled: true,
         },
       }),
       Components({
-        resolvers: [ElementPlusResolver()],
+        resolvers: [ElementPlusResolver({
+          importStyle: 'sass',
+        })],
+      }),
+      ElementPlus({
+        useSource: true,
+      }),
+      Unocss({
+        presets: [
+          presetUno(),
+          presetAttributify(),
+          presetIcons({
+            scale: 1.2,
+            warn: true,
+          }),
+        ],
+        transformers: [
+          transformerDirectives(),
+          transformerVariantGroup(),
+        ],
       }),
     ],
     define: { 'process.env': {} },
@@ -124,6 +154,13 @@ export default defineConfig(({ command }) => {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
         '@images': fileURLToPath(new URL('./src/assets/images', import.meta.url)),
         '@styles': fileURLToPath(new URL('./src/styles', import.meta.url)),
+      },
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@styles/element/index.scss" as *;',
+        },
       },
     },
     server: {
