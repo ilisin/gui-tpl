@@ -14,6 +14,9 @@ const onChange = () => {
     <ElButton @click="onChange">
       切换主题
     </ElButton>
+    <RouterLink to="/demo/icons">
+      icons
+    </RouterLink>
     <span>is dark: {{ isDark }}</span>
     <h1>hello11s</h1>
     <ElButton>hello</ElButton>

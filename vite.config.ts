@@ -12,6 +12,8 @@ import {
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import ElementPlus from 'unplugin-element-plus/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
@@ -126,9 +128,16 @@ export default defineConfig(({ command }) => {
         },
       }),
       Components({
-        resolvers: [ElementPlusResolver({
-          importStyle: 'sass',
-        })],
+        resolvers: [
+          ElementPlusResolver({
+            importStyle: 'sass',
+          }),
+          IconsResolver(),
+        ],
+      }),
+      Icons({
+        autoInstall: true,
+        compiler: 'vue3',
       }),
       ElementPlus({
         useSource: true,

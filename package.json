@@ -20,6 +20,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config-vue": "^0.39.4",
+    "@iconify-json/carbon": "^1.1.18",
+    "@iconify-json/mdi": "^1.1.52",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
     "@vitejs/plugin-vue": "^4.1.0",
@@ -45,6 +47,7 @@
     "unocss": "^0.53.1",
     "unplugin-auto-import": "^0.16.4",
     "unplugin-element-plus": "^0.7.1",
+    "unplugin-icons": "^0.16.3",
     "unplugin-vue-router": "^0.6.4",
     "vite": "^4.3.9",
     "vite-plugin-electron": "^0.11.2",
