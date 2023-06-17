@@ -1,0 +1,18 @@
+:root {
+  --ui-color-text: blue;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ui-color-text: green;
+  }
+
+  // @import "./themes/dark";
+}
+
+// @media (prefers-color-scheme: light) {
+//   // @import "./themes/light";
+//   :root {
+//     --ui-color-text: green;
+//   }
+// }

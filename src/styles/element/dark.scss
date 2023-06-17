@@ -7,5 +7,11 @@ $--colors: (
 );
 
 @forward "element-plus/theme-chalk/src/dark/var.scss" with (
+  $bg-color: (
+    // "page": #0a0a0a,
+    "page": #0a0a0a,
+    "": #626aef,
+    "overlay": #1d1e1f,
+  ),
   $colors: $--colors
 );

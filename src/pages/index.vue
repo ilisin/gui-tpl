@@ -17,8 +17,12 @@ const onChange = () => {
     <RouterLink to="/demo/icons">
       icons
     </RouterLink>
+    <RouterLink to="/console/demo">
+      console
+    </RouterLink>
     <span>is dark: {{ isDark }}</span>
     <h1>hello11s</h1>
+    <span class="test-theme">span</span>
     <ElButton>hello</ElButton>
     <ElButton>hello</ElButton>
     <ElButton type="primary">
@@ -38,3 +42,9 @@ const onChange = () => {
     </ElButton>
   </div>
 </template>
+
+<style scoped lang="scss">
+.test-theme {
+  color: var(--ui-color-text);
+}
+</style>

@@ -112,6 +112,7 @@ export default defineConfig(({ command }) => {
       AutoImport({
         imports: [
           'vue',
+          'pinia',
           '@vueuse/core',
           VueRouterAutoImports,
 
@@ -119,6 +120,9 @@ export default defineConfig(({ command }) => {
           //   // add any other imports you were relying on
           //   'vue-router/auto': ['useLink'],
           // },
+        ],
+        dirs: [
+          '@/store',
         ],
         resolvers: [ElementPlusResolver({
           importStyle: 'sass',

@@ -1,0 +1,129 @@
+/* stylelint-disable liberty/use-logical-spec */
+@use "./variables.scss" as variables;
+
+$titlebar-actions-height: 30px;
+
+.titlebar {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  -webkit-app-region: drag;
+  background: variables.$titlebar-bg;
+  min-block-size: 1.6rem;
+  padding-block: 0;
+  padding-inline: variables.$gutter-h;
+
+  // app icon
+  &-icon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    -webkit-app-region: no-drag;
+
+    // width: 120px;
+    img {
+      width: 26px;
+      height: 24px;
+
+      // padding: variables.$gutter-h 0;
+      -webkit-app-region: drag;
+    }
+
+    .flyout-nav {
+      z-index: 1;
+      -webkit-app-region: no-drag;
+
+      li > a,
+      .menu-item {
+        -webkit-app-region: no-drag;
+      }
+    }
+  }
+
+  x-menubar {
+    margin-block: -11px;
+    margin-inline: 0;
+  }
+
+  // app title
+  &-title {
+    position: absolute;
+    color: variables.$text-light;
+    font-size: 0.85rem;
+    inset-inline: 0;
+    line-height: 2;
+    text-align: center;
+    user-select: none;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    margin: variables.$ng-gutter-h;
+    -webkit-app-region: no-drag;
+    margin-inline-start: 0;
+
+    button {
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      border: 0;
+      border-radius: 0;
+      margin: 0;
+      background: transparent;
+      block-size: $titlebar-actions-height;
+      box-shadow: none;
+
+      // color: variables.$text-light;
+      min-inline-size: 0;
+      padding-block: 0;
+      padding-inline: 0.75rem;
+
+      &:hover {
+        color: variables.$text-dark;
+      }
+
+      &:focus {
+        background: transparent;
+      }
+    }
+
+    #maximize {
+      i {
+        font-size: 16px;
+      }
+
+      .maximized {
+        transform: rotate(180deg);
+      }
+
+      &:hover {
+        background: variables.$brand-info;
+      }
+    }
+
+    #quit {
+      &:hover {
+        background: variables.$brand-danger;
+      }
+    }
+  }
+
+  // If Windows
+  &.windows {
+    justify-content: space-between;
+
+    .titlebar-icon {
+      position: relative;
+      inset-block: initial;
+      inset-inline-start: initial;
+    }
+  }
+}

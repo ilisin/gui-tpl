@@ -183,7 +183,8 @@ $--colors: (
     "round": $border-radius-lg,
   ),
 );
-@debug $--colors;
+
+// @debug $--colors;
 
 // custom dark variables
 // @use "./dark.scss";

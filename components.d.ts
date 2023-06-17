@@ -14,7 +14,11 @@ declare module 'vue' {
     IMdiAccountBox: typeof import('~icons/mdi/account-box')['default']
     IMdiApplicationBraces: typeof import('~icons/mdi/application-braces')['default']
     IMdiApplicationBraes: typeof import('~icons/mdi/application-braes')['default']
+    IMdiWindowClose: typeof import('~icons/mdi/window-close')['default']
+    IMdiWindowMaximize: typeof import('~icons/mdi/window-maximize')['default']
+    IMdiWindowMinimize: typeof import('~icons/mdi/window-minimize')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Titlebar: typeof import('./src/components/Titlebar.vue')['default']
   }
 }

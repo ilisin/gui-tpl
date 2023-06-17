@@ -1,0 +1,28 @@
+@use "./element/index" as el;
+
+// Theme
+$theme-base: #fff !default;
+
+// $theme-primary: #fad83b !default;
+$theme-primary: el.$primary !default;
+
+// $theme-secondary: #4ad0ff !default;
+$theme-secondary: #4ad0ff !default;
+
+// Colors
+$text-dark: rgba($theme-base, 0.87) !default;
+$text-light: rgba($theme-base, 0.57) !default;
+
+// brand colors
+$brand-info: $theme-secondary !default;
+$brand-warning: el.$yellow !default;
+$brand-danger: el.$red !default;
+$brand-default: rgba($theme-base, 0.57) !default;
+$brand-primary: $theme-primary !default;
+$brand-secondary: $theme-secondary !default;
+
+// Padding
+$gutter-w: 0.8rem;
+$gutter-h: 0.4rem;
+$ng-gutter-h: -0.4rem;
+$titlebar-bg: transparent !default;

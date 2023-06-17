@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { join } from 'node:path'
 import { BrowserWindow, app, ipcMain, shell } from 'electron'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
+
+const rawLog = require('electron-log')
+
+const logger = rawLog.scope('main')
 
 // The built directory structure
 //
@@ -40,6 +45,7 @@ async function createWindow() {
     title: 'Main window',
     width: 1200,
     height: 800,
+    frame: false,
 
     // icon: join(process.env.PUBLIC, 'favicon.ico'),
     webPreferences: {
@@ -124,4 +130,24 @@ ipcMain.handle('open-win', (_, arg) => {
 
   else
     childWindow.loadFile(indexHtml, { hash: arg })
+})
+
+// Window control example arg: 'minimize' | 'maximize' | 'unmaximize' | 'close'
+ipcMain.on('win-control', (_, arg) => {
+  logger.debug('win-control', arg)
+  if (win) {
+    if (arg === 'maximize') {
+      if (!win.isMaximized())
+        win.maximize()
+      else win.unmaximize()
+    }
+    else if (arg === 'close') {
+      win.close()
+    }
+    else if (arg === 'minimize') {
+      if (win.isMinimized())
+        win.restore()
+      else win.minimize()
+    }
+  }
 })

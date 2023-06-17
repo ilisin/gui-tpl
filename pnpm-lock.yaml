@@ -52,6 +52,9 @@ devDependencies:
   electron-devtools-installer:
     specifier: ^3.2.0
     version: 3.2.0
+  electron-log:
+    specifier: ^4.4.8
+    version: 4.4.8
   eslint:
     specifier: ^8.41.0
     version: 8.41.0
@@ -2435,6 +2438,10 @@ packages:
       semver: 7.5.1
       tslib: 2.5.2
       unzip-crx-3: 0.2.0
+    dev: true
+
+  /electron-log@4.4.8:
+    resolution: {integrity: sha512-QQ4GvrXO+HkgqqEOYbi+DHL7hj5JM+nHi/j+qrN9zeeXVKy8ZABgbu4CnG+BBqDZ2+tbeq9tUC4DZfIWFU5AZA==}
     dev: true
 
   /electron-publish@24.4.0:
