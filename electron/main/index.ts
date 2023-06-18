@@ -47,6 +47,8 @@ async function createWindow() {
     height: 800,
     frame: false,
 
+    titleBarStyle: 'hiddenInset',
+
     // icon: join(process.env.PUBLIC, 'favicon.ico'),
     webPreferences: {
       preload,

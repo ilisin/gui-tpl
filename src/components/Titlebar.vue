@@ -68,7 +68,7 @@ console.log(config.isMac)
 </template>
 
 <style lang="scss">
-.windows-title {
-  user-select: none;
-}
+// .windows-title {
+//   user-select: none;
+// }
 </style>
