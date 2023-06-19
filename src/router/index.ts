@@ -7,6 +7,11 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   console.log('router.beforeEach', to, from)
+  if (to.name === 'Root' && !to.query.frozen) {
+    next({ path: '/main' })
+
+    return
+  }
   next()
 })
 

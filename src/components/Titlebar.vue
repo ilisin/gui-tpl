@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import AppMenu from '@/components/AppMenu.vue'
 import { useConfigStore } from '@/store/config'
 
 const { ipcRenderer } = window.require('electron')
@@ -28,12 +29,15 @@ console.log(config.isMac)
     :class="{ windows: !config.isMac }"
     @dblclick="maximizeWindow"
   >
-    <div
+    <!--
+      <div
       v-if="!config.isMac"
       class="titlebar-icon"
-    >
+      >
+    -->
+    <div class="titlebar-icon">
       <img src="@/assets/logo.svg">
-      <!-- <AppMenu /> -->
+      <AppMenu />
     </div>
     <div class="titlebar-title noselect">
       标题：{{ config.title }}
@@ -68,6 +72,8 @@ console.log(config.isMac)
 </template>
 
 <style lang="scss">
+@use "@styles/titlebar.scss" as *;
+
 // .windows-title {
 //   user-select: none;
 // }
