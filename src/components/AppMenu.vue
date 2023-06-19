@@ -4,7 +4,7 @@ import { useConfigStore } from '@/store/config'
 const config = useConfigStore()
 
 interface MenuItem {
-  id?: string
+  id: string
   label?: string
   accelerator?: string
   click?: (label: string | undefined) => void
@@ -14,6 +14,7 @@ interface MenuItem {
 
 const menus: [MenuItem] = [
   {
+    id: 'top-file',
     label: 'File',
     submenu: [
       {
@@ -35,6 +36,7 @@ const menus: [MenuItem] = [
     ],
   },
   {
+    id: 'top-edit',
     label: 'Edit',
     submenu: [
       {
@@ -57,7 +59,7 @@ const menus: [MenuItem] = [
   },
 ]
 
-const nav = ref(null)
+const nav = ref<InstanceType<typeof HTMLElement> | null>(null)
 const menuActive = ref(false)
 const selected = ref<MenuItem | null>(null)
 const hovered = ref<MenuItem | null>(null)
@@ -69,39 +71,23 @@ const setSelected = (menu: MenuItem) => {
 }
 
 const unselect = (menu: MenuItem) => {
-  console.log('unselect', menu, selected.value, menuActive.value)
-  if (!menuActive.value && selected.value === menu) {
-    console.log('unselect')
+  if (!menuActive.value && selected.value?.id === menu.id)
     selected.value = null
-  }
 }
 
 const setHover = (item: MenuItem, parent: MenuItem | null = null) => {
   hovered.value = item
   hoveredParent.value = parent
-  console.log('setHover', item, parent)
 }
 
 const setActive = (item: MenuItem) => {
-  console.log('setActive', item)
   menuActive.value = !menuActive.value
-  setSelected(item)
-  setHover(item)
+  selected.value = item
 }
 
-// const hoverClass = computed(() => (item: MenuItem) => {
-//   return {
-//     hovered: [hovered.value, hoveredParent.value].includes(item),
-//   }
-// })
-
 const hoverClass = (item: MenuItem) => {
-  const result = [hovered.value?.label, hoveredParent.value?.label].includes(item.label)
-
-  console.log('hoverClass', hovered.value, hoveredParent.value, item, result)
-
   return {
-    hovered: [hovered.value?.label, hoveredParent.value?.label].includes(item.label),
+    hovered: hovered.value?.id === item.id || hoveredParent.value?.id === item.id,
   }
 }
 
@@ -137,6 +123,50 @@ const shortcutText = (item: MenuItem) => {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => { }
+
+const menuElements = computed(() => {
+  // const els = nav.value?.querySelectorAll('.menu-item') as NodeListOf<HTMLElement>
+  if (nav.value)
+    return Array.from(nav.value.getElementsByTagName('*'))
+
+  return []
+})
+
+const maybeHideMenu = (e: MouseEvent) => {
+  if (menuActive.value) {
+    const target = e.target
+    if (!menuElements.value.includes(target as HTMLElement)) {
+      menuActive.value = false
+      console.log('out')
+    }
+    else {
+      console.log('in')
+    }
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', maybeHideMenu)
+})
+onUnmounted(() => {
+  document.removeEventListener('click', maybeHideMenu)
+})
+
+const keys = useMagicKeys()
+const shiftCtrlA = keys['Shift+Ctrl+A']
+const osLeftA = keys['Command+K']
+
+watch(shiftCtrlA, v => {
+  console.log(v)
+  if (v)
+    console.log('Shift + Ctrl + A have been pressed')
+})
+
+watch(osLeftA, v => {
+  console.log(v)
+  if (v)
+    console.log('OSLeft + K have been pressed')
+})
 </script>
 
 <template>
@@ -151,31 +181,23 @@ const noop = () => { }
         v-for="menu in menus"
         :key="menu.label"
         class="top-menu-item"
-        :class="{ selected: menu === selected }"
+        :class="{ selected: menu.id === selected?.id }"
         @mouseover.prevent="setSelected(menu)"
         @dblclick.stop="noop"
         @mouseleave.prevent="unselect(menu)"
       >
         <a
-          :class="{ selected: menu === selected }"
+          :class="{ selected: menu.id === selected?.id }"
           @mousedown.prevent="setActive(menu)"
         ><span class="label">{{ menu.label }}</span></a>
         <!-- FIRST LEVEL MENU, eg New Window, New Tab -->
         <ul>
           <li
-            v-for="(item, idx) in menu.submenu"
-            :key="item.id || idx"
+            v-for="item in menu.submenu"
+            :key="item.id"
             class="menu-item"
             :class="{ 'has-children': !!item.submenu, ...hoverClass(item) }"
           >
-            <!--
-              <li
-              v-for="(item, idx) in menu.submenu"
-              :key="item.id || idx"
-              class="menu-item hovered"
-              :class="{ 'has-children': !!item.submenu }"
-              >
-            -->
             <a
               :class="hoverClass(item)"
               @mousedown.prevent="noop"
@@ -189,7 +211,7 @@ const noop = () => { }
             <ul v-if="item.submenu">
               <li
                 v-for="subitem in item.submenu"
-                :key="subitem.label"
+                :key="subitem.id"
                 class="menu-item"
               >
                 <a

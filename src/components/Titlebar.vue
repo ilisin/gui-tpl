@@ -29,13 +29,10 @@ console.log(config.isMac)
     :class="{ windows: !config.isMac }"
     @dblclick="maximizeWindow"
   >
-    <!--
-      <div
+    <div
       v-if="!config.isMac"
       class="titlebar-icon"
-      >
-    -->
-    <div class="titlebar-icon">
+    >
       <img src="@/assets/logo.svg">
       <AppMenu />
     </div>
