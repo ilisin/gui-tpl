@@ -71,9 +71,17 @@
           top: 0;
           left: $gutter-h * 0.5;
           padding: $gutter-h * 0.5;
-          content: "\e5ca";
-          font-family: "Material Icons";
+
+          // content: "\e5ca";
+          // font-family: "Material Icons";
         }
+      }
+
+      .menu-item-check {
+        position: absolute;
+        top: 0.25rem;
+        left: $gutter-h * 0.5;
+        padding: $gutter-h * 0.5;
       }
 
       &.hovered {
@@ -84,15 +92,13 @@
     &.has-children > a {
       margin-right: 2.5rem;
 
-      &::after {
-        position: absolute;
-        right: 0;
-        padding: $gutter-h $gutter-w;
-        padding-left: $gutter-w * 2;
-        content: "\e315";
-        font-family: "Material Icons";
-        text-align: right;
-      }
+      // &::after {
+      //   position: absolute;
+      //   right: 0;
+      //   padding: $gutter-h $gutter-w;
+      //   padding-left: $gutter-w * 2;
+      //   text-align: right;
+      // }
     }
 
     &.disabled {

@@ -8,9 +8,15 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppMenu: typeof import('./src/components/AppMenu.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElRow: typeof import('element-plus/es')['ElRow']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
+    ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
+    IMdiAccountBox: typeof import('~icons/mdi/account-box')['default']
+    IMdiApplicationBraces: typeof import('~icons/mdi/application-braces')['default']
+    IMdiCheck: typeof import('~icons/mdi/check')['default']
+    IMdiChevronRight: typeof import('~icons/mdi/chevron-right')['default']
     IMdiWindowClose: typeof import('~icons/mdi/window-close')['default']
     IMdiWindowMaximize: typeof import('~icons/mdi/window-maximize')['default']
     IMdiWindowMinimize: typeof import('~icons/mdi/window-minimize')['default']

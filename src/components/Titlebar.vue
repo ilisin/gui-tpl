@@ -18,9 +18,6 @@ const maximizeWindow = () => {
 const closeWindow = () => {
   ipcRenderer.send('win-control', 'close')
 }
-
-console.log(config.title)
-console.log(config.isMac)
 </script>
 
 <template>
@@ -70,8 +67,4 @@ console.log(config.isMac)
 
 <style lang="scss">
 @use "@styles/titlebar.scss" as *;
-
-// .windows-title {
-//   user-select: none;
-// }
 </style>
