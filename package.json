@@ -1,5 +1,5 @@
 {
-  "name": "game-debugger",
+  "name": "electron-tpl",
   "private": true,
   "version": "0.0.0",
   "main": "dist/electron/main/index.js",

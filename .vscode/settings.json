@@ -44,6 +44,7 @@
   // Extension: Spell Checker
   "cSpell.words": [
     "antfu",
+    "iconify",
     "pinia",
     "stylelint",
     "unplugin",

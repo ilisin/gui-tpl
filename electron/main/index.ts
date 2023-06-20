@@ -3,6 +3,8 @@ import { join } from 'node:path'
 import { BrowserWindow, app, ipcMain, shell } from 'electron'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
 
+import setMenu from './menu'
+
 const rawLog = require('electron-log')
 
 const logger = rawLog.scope('main')
@@ -60,6 +62,8 @@ async function createWindow() {
       contextIsolation: false,
     },
   })
+
+  setMenu()
 
   if (process.env.VITE_DEV_SERVER_URL) { // electron-vite-vue#298
     win.loadURL(process.env.VITE_DEV_SERVER_URL)
