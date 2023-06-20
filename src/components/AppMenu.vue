@@ -10,7 +10,9 @@ interface MenuItem {
   label?: string
   accelerator?: string
   click?: (label: string | undefined) => void
-  checked?: ComputedRef<boolean>
+
+  // checked?: ComputedRef<boolean>
+  checked?: () => boolean
   submenu?: Array<MenuItem>
 }
 
@@ -34,7 +36,9 @@ const menus: Array<MenuItem> = [
               if (!isDark.value)
                 toggleDark()
             },
-            checked: computed(() => isDark.value),
+
+            // checked: computed(() => isDark.value),
+            checked: () => isDark.value,
           },
           {
             id: 'window-theme-light',
@@ -46,7 +50,8 @@ const menus: Array<MenuItem> = [
             },
 
             // checked: !isDark.value,
-            checked: computed(() => !isDark.value),
+            // checked: computed(() => !isDark.value),
+            checked: () => !isDark.value,
           },
         ],
       },
@@ -287,35 +292,6 @@ onUnmounted(() => {
   document.removeEventListener('click', maybeHideMenu)
   window.removeEventListener('keydown', maybeCaptureKeydown, false)
 })
-
-// const shiftCtrlA = keys['Shift+Ctrl+A']
-// const osLeftA = keys['Command+K']
-
-// const keyF11 = keys.F11
-// const keyShiftCommandF = keys['Shift+Command+F']
-
-// watch(shiftCtrlA, v => {
-//   console.log(v)
-//   if (v)
-//     console.log('Shift + Ctrl + A have been pressed')
-// })
-
-// watch(osLeftA, v => {
-//   console.log(v)
-//   if (v)
-//     console.log('OSLeft + K have been pressed')
-// })
-
-// watch(keyF11, v => {
-//   if (v)
-//     console.log('F11 have been pressed')
-// })
-
-// watch(keyShiftCommandF, v => {
-//   console.log(v)
-//   if (v)
-//     console.log('F11 have been pressed')
-// })
 </script>
 
 <template>
@@ -378,7 +354,7 @@ onUnmounted(() => {
                 >
                   <span class="label">
                     <i-mdi-check
-                      v-if="subitem.checked?.value"
+                      v-if="subitem.checked?.()"
                       class="menu-item-check"
                     />
                     <span>{{ subitem.label }}</span>

@@ -1,5 +1,5 @@
 /* stylelint-disable liberty/use-logical-spec */
-@use "./variables.scss" as variables;
+@use "./variables.scss" as *;
 
 $titlebar-actions-height: 30px;
 
@@ -11,10 +11,10 @@ $titlebar-actions-height: 30px;
   justify-content: center;
   margin: 0;
   -webkit-app-region: drag;
-  background: variables.$titlebar-bg;
+  background: $titlebar-bg;
   min-block-size: 1.6rem;
   padding-block: 0;
-  padding-inline: variables.$gutter-h;
+  padding-inline: $gutter-h;
 
   & window-title {
     -webkit-app-region: drag;
@@ -57,7 +57,9 @@ $titlebar-actions-height: 30px;
   // app title
   &-title {
     position: absolute;
-    color: variables.$text-light;
+
+    // color: $text-light;
+    color: var(--el-text-color-secondary);
     font-size: 0.85rem;
     inset-inline: 0;
     line-height: 2;
@@ -71,7 +73,7 @@ $titlebar-actions-height: 30px;
 
   &-actions {
     display: flex;
-    margin: variables.$ng-gutter-h;
+    margin: -$gutter-h;
     -webkit-app-region: no-drag;
     margin-inline-start: 0;
 
@@ -92,7 +94,7 @@ $titlebar-actions-height: 30px;
       padding-inline: 0.75rem;
 
       &:hover {
-        color: variables.$text-dark;
+        color: $text-dark;
       }
 
       &:focus {
@@ -110,13 +112,13 @@ $titlebar-actions-height: 30px;
       }
 
       &:hover {
-        background: variables.$brand-info;
+        background: $brand-info;
       }
     }
 
     #quit {
       &:hover {
-        background: variables.$brand-danger;
+        background: $brand-danger;
       }
     }
   }

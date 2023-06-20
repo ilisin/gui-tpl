@@ -3,10 +3,12 @@ import AppMenu from '@/components/AppMenu.vue'
 </script>
 
 <template>
-  <h1>Main index</h1>
+  <h1 class="main-title">
+    Main index
+  </h1>
 
   <el-row>
-    <RouterLink :to="{ name: 'Root', query: { frozen: true } }">
+    <RouterLink :to="{ name: 'Root', query: { frozen: 1 } }">
       Home
     </RouterLink>
   </el-row>
@@ -14,3 +16,9 @@ import AppMenu from '@/components/AppMenu.vue'
     <AppMenu />
   </el-row>
 </template>
+
+<style lang="scss" scoped>
+.main-title {
+  color: var(--el-text-color-primary);
+}
+</style>

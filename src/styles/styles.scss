@@ -1,10 +1,6 @@
 // import dark theme
 @use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;
 
-// @use "./element/dark.scss" as *;
-// @use "titlebar.scss";
-@use "./test" as *;
-
 :root {
   background: rgba(var(--el-bg-color), 0.8);
 }

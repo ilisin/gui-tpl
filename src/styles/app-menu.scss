@@ -151,7 +151,9 @@
           height: $titlebar-actions-height;
           align-items: center;
           padding: 0 ($gutter-w * 0.85);
-          color: $text-lighter;
+
+          // color: $text-lighter;
+          color: var(--el-text-color-secondary);
           font-size: 85%;
         }
 
@@ -159,7 +161,8 @@
           background: transparent;
 
           .label {
-            color: $text-dark;
+            // color: $text-dark;
+            color: var(--el-text-color-primary);
           }
         }
       }
